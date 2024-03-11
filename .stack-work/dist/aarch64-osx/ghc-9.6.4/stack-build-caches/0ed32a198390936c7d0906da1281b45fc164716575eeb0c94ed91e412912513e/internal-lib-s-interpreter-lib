@@ -1,0 +1,14 @@
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/CHANGELOG.md:
+  hash: 44f6baf043654e775caa124d9eb86e4b4a7d7440e0b25cab5c73ae2ca96e30cb
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/README.md:
+  hash: f17aa86ba301e52d2ce02f4b395fb1037c7e0362883b596a36190373003d2d6d
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/lib/HaskellPrinter.hs:
+  hash: 8dc89961813d95ce2bb5c8634c3741734e48dadca5280af012b291cc32f8c0c2
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/lib/Interpreter.hs:
+  hash: 31a095710157da358eda04c4b446cb4621068439777c7c89d43e64e32f65941d
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/lib/LengthCalculator.hs:
+  hash: 8e42318d4dfb0cda9ef523b5c3576254ada50c368ae91531dadc93002388a165
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/lib/ProgramPrinter.hs:
+  hash: b1c2eaf7425830de2553660819fe9ce8c252d774a731c86200c2e90242ef57c8
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/s-interpreter.cabal:
+  hash: 5755f7dbd919c074f83c1292657abf3bff763673b0c8e4849c0d73a62557f684

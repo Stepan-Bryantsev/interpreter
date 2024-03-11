@@ -1,0 +1,16 @@
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/CHANGELOG.md:
+  hash: 44f6baf043654e775caa124d9eb86e4b4a7d7440e0b25cab5c73ae2ca96e30cb
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/README.md:
+  hash: f17aa86ba301e52d2ce02f4b395fb1037c7e0362883b596a36190373003d2d6d
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/s-interpreter.cabal:
+  hash: 5755f7dbd919c074f83c1292657abf3bff763673b0c8e4849c0d73a62557f684
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/test/AdvancedTests.hs:
+  hash: 1dbb77b747f56fed30c1fefded213d50eaa068a3ad68392862230aecf83ed739
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/test/InterpreterTests.hs:
+  hash: cbb4b810f7cfe7cfba91e8bd36f7a401547bccf33080b37da67728a5916e058d
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/test/MainTests.hs:
+  hash: 6ca7eb8296393229b490e60a21ad6cc1c39d8ee73bc8d56d85bf66b8661f1277
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/test/PrintingTests.hs:
+  hash: eaa7251b40ec2cfc50333bdace5a3806f73c93b95faaa7ec0d549260294aeeaa
+/Users/stepanmac/McMaster/Generative programming/project/s-interpreter/test/ProgramLengthTests.hs:
+  hash: 6bda108215db86ab6d23e0a21eebc3c473ec8ec21738e71005e7943bdfbdff57
