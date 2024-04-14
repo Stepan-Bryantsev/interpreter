@@ -58,5 +58,9 @@ instance SemanticsLambda C where
     --lam f     = C $ [| unC . f . C |]
     app e1 e2 = C $ [| $(unC e1) $(unC e2) |]
 
+    {-
+        How to properly implement lambda?
+    -}
+
 -- instance SemanticsFix R where
 --     fix f = R $ fx (unR . f . R) where fx f = f (fx f)

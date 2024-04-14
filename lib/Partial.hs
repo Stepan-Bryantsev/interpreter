@@ -43,4 +43,14 @@ instance SemanticsInt repr => SemanticsInt (Partial repr) where
     eq  e1 e2 = Partial {dyn = eq  (dyn e1) (dyn e2), sta = liftA2 (==) (sta e1) (sta e2) }
     leq e1 e2 = Partial {dyn = leq (dyn e1) (dyn e2), sta = liftA2 (<=) (sta e1) (sta e2) }
     geq e1 e2 = Partial {dyn = geq (dyn e1) (dyn e2), sta = liftA2 (>=) (sta e1) (sta e2) }
-    
+
+
+class SemanticsLambda2 repr where
+    lam_ :: (rep a -> rep b)     -> rep (rep a -> rep b)
+    app_ :: rep (rep a -> rep b) -> rep a -> rep b
+    fix_ :: rep (rep a -> rep a) -> rep a
+
+instance repr => SemanticsInt (Partial repr) where
+    {-
+        How to properly implement lambda?
+    -}
