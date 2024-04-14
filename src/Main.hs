@@ -56,3 +56,5 @@ main = do
 
        print $(unC (if_ (eq (int 1) (int 2)) (int 100) (neg (int 100))))
 
+       print (show ((unA (int 1) == Negative)))
+

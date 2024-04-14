@@ -17,16 +17,16 @@ extra-source-files:  README.md
 
 
 library s-interpreter-lib
-    exposed-modules:  Interpreter, HaskellPrinter, LengthCalculator, ProgramPrinter
+    exposed-modules:  Interpreter, HaskellPrinter, LengthCalculator, ProgramPrinter, Compiler, TraceInterpreter, Partial, Abstract
     hs-source-dirs:   lib
-    build-depends:    base >= 4.7 && < 5, text
+    build-depends:    base >= 4.7 && < 5, text, template-haskell
     default-language: Haskell2010       
 
 executable s-interpreter
   hs-source-dirs:      src
   main-is:             Main.hs
   default-language:    Haskell2010
-  build-depends:       base >= 4.7 && < 5, text, s-interpreter-lib
+  build-depends:       base >= 4.7 && < 5, text, s-interpreter-lib, template-haskell
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities
