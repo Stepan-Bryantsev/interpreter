@@ -1,0 +1,28 @@
+# Cabal and GHC build artefacts
+dist/
+dist-newstyle/
+*.hi
+*.o
+
+# Haskell Tool Stack-related
+.stack-work/
+tests/integration/tests/**/*.yaml.lock
+
+# Stack's GitHub workflow-related
+_release/
+
+# MkDocs-related
+_site/
+
+# Haskell Language Server-related
+hie.yaml
+
+# Vim-related
+*.swp
+*.tag
+
+# macOS-related
+.DS_Store
+
+# Unexplained
+*~
