@@ -4,11 +4,15 @@
 
 module Compiler where
 
+{-
+    Here is implementation of the compiler module using haskell templates. 
+-}
+
 import Language.Haskell.TH
 import qualified Language.Haskell.TH.Syntax as Syntax
 import GHC.Exts
 
-import Interpreter
+import Semantics
 import Helpers
 
 newtype C a = C ExpQ
@@ -54,13 +58,9 @@ instance SemanticsPair C where
     second     = liftC1 [| snd |]
 
 instance SemanticsLambda C where 
-    --lam f     = R $ unR . f . R
-    --lam f     = C $ [| unC . f . C |]
-    app e1 e2 = C $ [| $(unC e1) $(unC e2) |]
+    lam f = C $ do
+        x <- Syntax.newName "x"
+        body <- unC (f (C (varE x)))
+        return $ Syntax.LamE [Syntax.VarP x] body
 
-    {-
-        How to properly implement lambda?
-    -}
-
--- instance SemanticsFix R where
---     fix f = R $ fx (unR . f . R) where fx f = f (fx f)
+    app f x = C $ [| $(unC f) $(unC x) |]

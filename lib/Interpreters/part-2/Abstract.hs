@@ -1,33 +1,36 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 
-
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE UndecidableInstances #-}
-{-# LANGUAGE StarIsType              #-}
+{-# LANGUAGE StarIsType #-}
 
-
+{-
+    Implementation of abstract interpreter here. 
+-}
 
 module Abstract where
 
-import Interpreter
+import Semantics
+import ExtendedSemantics
 
 
 data State = On | Off | AnyState deriving (Eq)
-data Sign = Positive | NonPositive | Zero | Negative | NonNegative | AnySign deriving (Eq)
+data Sign = Positive | NonPositive | Zero | Negative | NonNegative | AnySign deriving (Eq, Show)
+
+{-
+    I suppose that the NonPositive and NonNegative parts are unnecessary. 
+    There no cases where evaluation could return NonPositive/NonNegative,
+    because the basic case for int return only Positive, Negative and Zero
+-}
 
 type family Semantics2 a :: * where
                     Semantics2 Bool           = State
                     Semantics2 Int            = Sign
                     Semantics2 (a -> b)       = Semantics2 a -> Semantics2 b
                     Semantics2 (a, b)         = (Semantics2 a, Semantics2 b)
-                    Semantics2 (Either a b)   = Either (Semantics2 a) (Semantics2 b)
                     Semantics2 (A a) = A a
 
 newtype A a = A (Semantics2 a)
---type instance Semantics2 (A a) = A a
-
--- evalIf :: A a -> A a -> A a
--- evalIf On On = A On
 
 unA :: A a -> Semantics2 a
 unA (A x) = x
@@ -100,20 +103,24 @@ instance SemanticsBool A where
                 (_, On) -> On
                 (Off, Off) -> Off
                 (_, _) -> AnyState
-
-    if_ e1 e2 e3 = A $ case (unA e1) of 
-                On -> (unA e2)
-                Off -> (unA e3)
-                {-
-                ??? 
-                AnyState -> AnyState or AnySign 
-                
-                How to check the type of (unA e2) and (unA e3)?
-
-                Plus I can't return State of Sign here because the semantics is repr Bool -> repr a -> repr a -> repr a
-
-                -}
                 
 
-    
-                
+
+{- 
+    I did not find a way to support both State and Sign in then/else. 
+    That why changed the semantics to work only with integers. 
+-}
+class AbstractSemanticsIf repr where
+    if__ :: repr Bool -> repr Int -> repr Int -> repr Int
+
+instance AbstractSemanticsIf A where 
+    if__ e1 e2 e3 = A $ case (unA e1) of 
+                    On -> (unA e2)
+                    Off -> (unA e3)
+                    -- if both branches has the same return value - then return it, else - AnySign
+                    AnyState -> if (unA e2) == (unA e3) then (unA e2) else AnySign
+
+-- Using extended semantics here 
+instance ExtendedSemanticsLambda A where 
+    lambda2 f      = A (\x -> f (A (unA x)))
+    apply2 (A f) x = f x

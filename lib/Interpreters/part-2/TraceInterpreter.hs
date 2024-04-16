@@ -3,18 +3,14 @@
 
 module TraceInterpreter where
 
-import Interpreter
+import Semantics
 import Data.Text
 
 -- Using text instead of String
 default (Text)
 
 {-
-    This module contains the program printing interpreter.  
-    It was now quite clear for me how shoul it look,
-    so I've created some pseudo- representation of the target program.
-
-    Added some tabulations for if and lambda.
+    The module contains a tracing interpreter, printing every command in it's level.  
 -}
 
 type Level = Int -- Counter for level of the expression.
@@ -59,9 +55,9 @@ instance SemanticsLambda T where
                             unT (e (T $ const $ const (showLevel l <> "Use var x" <> pack (show h) <> "\n"))) (l + 1) (h + 1)
     app e1 e2 = T $ \l -> \h -> (showLevel l) <> "App eval\n" <> unT e1 (l + 1) h <> unT e2 (l + 1) h
 
--- instance SemanticsFix P where 
---     fix e = P $ \h -> \t -> 
---        let self = "self" <> pack (show h)
---        in "(fix " <> self <> "." <> unP (e (P $ const $ const self)) (succ h) t <> ")"
+instance SemanticsFix T where 
+    fix e = T $ \l -> \h -> 
+       let self = "self" <> pack (show h)
+       in (showLevel l) <> "Eval fix func\n" <> unT (e (T $ const $ const self)) (l + 1) (h + 1)
 
 traceProgram e = unT e 0 0

@@ -3,7 +3,7 @@
 
 module ProgramPrinter where
 
-import Interpreter
+import Semantics
 import Data.Text
 
 -- Using text instead of String

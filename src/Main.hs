@@ -6,6 +6,8 @@
 
 module Main where
 
+import Semantics
+import ExtendedSemantics
 import Interpreter
 import HaskellPrinter
 import ProgramPrinter
@@ -35,7 +37,7 @@ testPartial = add (int 1) (int 2)
 testDyn = inject testPartial
 testSta = extract testDyn
 
-testA = add (int 1) (int 2)
+testA = apply2 (lambda2 (\x -> (x))) (int 0)
 
 
 main :: IO ()
@@ -56,5 +58,5 @@ main = do
 
        print $(unC (if_ (eq (int 1) (int 2)) (int 100) (neg (int 100))))
 
-       print (show ((unA (int 1) == Negative)))
+       print (show (unA testA))
 

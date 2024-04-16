@@ -2,7 +2,7 @@
 
 module LengthCalculator where
 
-import Interpreter
+import Semantics
 
 
 {-

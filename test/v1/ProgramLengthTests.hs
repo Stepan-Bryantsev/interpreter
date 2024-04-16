@@ -1,6 +1,6 @@
 module ProgramLengthTests where
 
-import Interpreter
+import Semantics
 import LengthCalculator
 import Test.HUnit
 

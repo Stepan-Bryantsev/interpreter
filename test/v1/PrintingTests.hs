@@ -3,7 +3,7 @@
 
 module PrintingTests where
 
-import Interpreter
+import Semantics
 import HaskellPrinter
 import ProgramPrinter
 import Test.HUnit

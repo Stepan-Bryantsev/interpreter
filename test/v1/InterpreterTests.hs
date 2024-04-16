@@ -1,5 +1,6 @@
 module InterpreterTests where
 
+import Semantics
 import Interpreter
 import Test.HUnit
 
